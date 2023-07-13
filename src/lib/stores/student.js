@@ -27,3 +27,14 @@ export async function updateStudent(student) {
 
 	return data;
 }
+
+export async function createStudent(student) {
+	const { data, error } = await supabase.from('students').insert([student]).select();
+
+	if (error) {
+		console.log(error);
+		throw error;
+	}
+
+	return data;
+}
