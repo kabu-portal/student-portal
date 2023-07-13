@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { onMount } from 'svelte';
 	import { fetchStudents, students } from '$lib/stores/students';
 	import Table from '$components/ui/table/Table.svelte';
@@ -11,11 +13,14 @@
 		TableCell
 	} from '$components/ui/table';
 
-	import * as Icons from 'svelte-feather-icons';
+	import StudentDialog from './StudentDialog.svelte';
 
 	onMount(async () => {
 		await fetchStudents();
 	});
+
+	// to edit existing students you need to save stuff in a form
+	let studentForm = null;
 </script>
 
 <div class="p-2">
@@ -27,7 +32,7 @@
 				<TableHead>Name</TableHead>
 				<TableHead>Email</TableHead>
 				<TableHead>Course</TableHead>
-				<TableHead class="text-right">Action</TableHead>
+				<TableHead>Action</TableHead>
 			</TableRow>
 		</TableHeader>
 		<TableBody>
@@ -38,11 +43,8 @@
 					<TableCell>{student.email}</TableCell>
 					<TableCell>{student.course_name}</TableCell>
 					<TableCell class="align-right">
-						<div class="flex justify-end cursor-pointer">
-							<a href={`/admin/${student.id}`}>
-								<Icons.ChevronRightIcon size="16" />
-							</a>
-						</div>
+						<!-- Edit existing users-->
+						<StudentDialog {student} />
 					</TableCell>
 				</TableRow>
 			{/each}
