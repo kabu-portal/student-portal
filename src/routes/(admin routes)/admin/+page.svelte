@@ -1,15 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fetchStudents, students } from '$lib/stores/students';
+	import StudentCard from '../components/StudentCard.svelte';
 
 	onMount(async () => {
 		await fetchStudents();
 	});
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>All Students</h1>
 
-<pre>
-    {JSON.stringify($students, null, 2)}
-</pre>
+<div>
+	{#each $students as student}
+		<StudentCard {student} />
+	{/each}
+</div>
+clear

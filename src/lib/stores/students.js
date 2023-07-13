@@ -8,7 +8,8 @@ export const students = writable([]);
 // load all students
 
 export async function fetchStudents() {
-	let { data, error } = await supabase.from('students').select('*');
+	// this SQL query fetches students from the database
+	let { data, error } = await supabase.from('students').select('first_name, last_name, id');
 	if (error) {
 		console.error(error);
 	}
