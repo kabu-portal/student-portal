@@ -13,6 +13,18 @@ export async function fetchStudentById(student_id) {
 	return data[0];
 }
 
+export async function fetchStudentByEmail(email) {
+	const { data, err } = await supabase.from('students').select('*').eq('email', email);
+	if (err) {
+		console.log(err);
+		throw err;
+	}
+	if (data.length == 0) {
+		throw 'This record does not exist';
+	}
+	return data[0];
+}
+
 export async function updateStudent(student) {
 	const { data, error } = await supabase
 		.from('students')

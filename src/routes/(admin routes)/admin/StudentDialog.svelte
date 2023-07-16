@@ -102,11 +102,12 @@
 		</div>
 		<hr />
 		<DialogFooter class="px-4">
-			{#if loading}
-				<Loader2 class="mr-2 h-4 w-4 animate-spin" />
-			{:else}
-				<Button on:click={handleSave} type="submit">Save changes</Button>
-			{/if}
+			<Button on:click={handleSave} type="submit">
+				{#if loading}
+					<Loader2 class="mr-2 h-4 w-4 animate-spin" />
+				{/if}
+				Save changes
+			</Button>
 		</DialogFooter>
 	</DialogContent>
 </Dialog>

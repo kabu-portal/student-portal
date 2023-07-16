@@ -35,9 +35,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/auth-helpers-sveltekit": "^0.10.1",
 		"@supabase/supabase-js": "^2.26.0",
 		"class-variance-authority": "^0.6.1",
 		"clsx": "^1.2.1",
+		"dayjs": "^1.11.9",
 		"lucide-svelte": "^0.259.0",
 		"radix-svelte": "^0.8.0",
 		"svelte-feather-icons": "^4.0.1",

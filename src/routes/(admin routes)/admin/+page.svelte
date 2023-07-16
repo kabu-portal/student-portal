@@ -36,7 +36,9 @@
 		<h1 class="text-3xl font-bold">Admin dashboard</h1>
 		<StudentDialog student={newStudentForm} isNew={true}>
 			<div slot="trigger">
-				<Button>Create new student</Button>
+				<Button class="bg-[#ac1d20]/10 text-black font-bold hover:bg-[#ac1d20] hover:text-white"
+					>Add new student record</Button
+				>
 			</div>
 		</StudentDialog>
 	</div>
