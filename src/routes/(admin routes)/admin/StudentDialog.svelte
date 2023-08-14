@@ -44,7 +44,14 @@
 		loading = false;
 	}
 
-	$: formIsValid = student?.national_id?.length === 8;
+	function validateEmail(email) {
+		// Regular expression pattern for validating emails
+		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+		return emailPattern.test(email);
+	}
+
+	$: formIsValid = student?.national_id?.length === 8 && validateEmail(student?.email);
 </script>
 
 <Dialog open={isOpen}>
@@ -65,9 +72,15 @@
 					<Label class="text-right">Registration</Label>
 					<Input class="col-span-3" bind:value={student.reg_no} disabled={false} />
 				</div>
-				<div class="grid grid-cols-4 items-center gap-4">
-					<Label class="text-right">Email</Label>
-					<Input class="col-span-3" bind:value={student.email} disabled={false} />
+				<div class="grid-cols-4">
+					<div class="grid grid-cols-4 items-center gap-4">
+						<Label class="text-right">Email</Label>
+						<Input class="col-span-3" bind:value={student.email} disabled={false} />
+					</div>
+
+					{#if !validateEmail(student?.email)}
+						<span class="text-red-400 text-sm text-right"> Enter a valid email </span>
+					{/if}
 				</div>
 				<hr class="grid-cols-4" />
 				<div class="grid grid-cols-4 items-center gap-4">
