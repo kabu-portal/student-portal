@@ -39,7 +39,7 @@
 	{#await fetchStudentByEmail(session.user.email)}
 		Loading student details ...
 	{:then student}
-		<StudentDetails {student} user={session.user} {logout} />
+		<StudentDetails {student} {logout} />
 	{/await}
 {:else}
 	<Auth {sendMagicLink} />

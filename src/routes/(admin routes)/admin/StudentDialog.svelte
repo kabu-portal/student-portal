@@ -43,6 +43,8 @@
 		console.log(data);
 		loading = false;
 	}
+
+	$: formIsValid = student?.national_id?.length === 8;
 </script>
 
 <Dialog open={isOpen}>
@@ -76,9 +78,14 @@
 					<Label class="text-right">Last name</Label>
 					<Input class="col-span-3" bind:value={student.last_name} />
 				</div>
-				<div class="grid grid-cols-4 items-center gap-4">
-					<Label class="text-right">National ID</Label>
-					<Input class="col-span-3" bind:value={student.national_id} />
+				<div class="grid-cols-4">
+					<div class="grid grid-cols-4 items-center gap-4">
+						<Label class="text-right">National ID</Label>
+						<Input class="col-span-3" bind:value={student.national_id} />
+					</div>
+					{#if student?.national_id?.length !== 8}
+						<span class="text-red-400 text-sm text-right"> ID must be 8 characters </span>
+					{/if}
 				</div>
 				<div class="grid grid-cols-4 items-center gap-4">
 					<Label class="text-right">Date of birth</Label>
@@ -102,7 +109,7 @@
 		</div>
 		<hr />
 		<DialogFooter class="px-4">
-			<Button on:click={handleSave} type="submit">
+			<Button on:click={handleSave} type="submit" disabled={!formIsValid}>
 				{#if loading}
 					<Loader2 class="mr-2 h-4 w-4 animate-spin" />
 				{/if}

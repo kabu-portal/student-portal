@@ -3,7 +3,7 @@
 	import dayjs from 'dayjs';
 	import Button from '$components/ui/button/Button.svelte';
 
-	export let user;
+	//export let user;
 	export let student;
 	export let logout;
 </script>
