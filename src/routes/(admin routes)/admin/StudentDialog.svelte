@@ -61,11 +61,11 @@
 			<div class="grid gap-4 py-4">
 				<div class="grid grid-cols-4 items-center gap-4">
 					<Label class="text-right">Registration</Label>
-					<Input class="col-span-3" bind:value={student.reg_no} disabled={!isNew} />
+					<Input class="col-span-3" bind:value={student.reg_no} disabled={false} />
 				</div>
 				<div class="grid grid-cols-4 items-center gap-4">
 					<Label class="text-right">Email</Label>
-					<Input class="col-span-3" bind:value={student.email} disabled={!isNew} />
+					<Input class="col-span-3" bind:value={student.email} disabled={false} />
 				</div>
 				<hr class="grid-cols-4" />
 				<div class="grid grid-cols-4 items-center gap-4">
